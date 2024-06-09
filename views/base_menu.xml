@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="todo_task_root_menu"
+        name="TO-DO"
+        web_icon='static/description/icon.png'/>
+
+
+    <menuitem
+        id="todo_menu"
+        name="Tasks"
+        parent="todo_task_root_menu"/>
+
+</odoo>
