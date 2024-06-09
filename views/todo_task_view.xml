@@ -12,6 +12,7 @@
                 <field name="phone" />
                 <field name="priority" widget="priority"/>
                 <field name="des" />
+                <field name="status" />
             </tree>
         </field>
     </record>
@@ -61,6 +62,8 @@
 
                 <filter name="assign_to" string="Assign To" context="{'group_by': 'assign_to'}" />
                 <filter name="my_tasks" string="My Tasks" domain="[('assign_to','=',uid)]" />
+                <filter name="open" string="Open" domain="[('status','!=','complete')]" />
+                <filter name="my_open_tasks" string="My Open Tasks"  domain="[('assign_to','=',uid), ('status','!=','complete')]"/>
 
             </search>
         </field>
@@ -70,12 +73,13 @@
     <record id="todo_task_action_all_tasks" model="ir.actions.act_window">
         <field name="name">All Tasks</field>
         <field name="res_model">todo.management</field>
+        <field name="context">{"search_default_open": 1}</field>
     </record>
 
     <record id="todo_task_action_my_tasks" model="ir.actions.act_window">
         <field name="name">My Tasks</field>
         <field name="res_model">todo.management</field>
-        <field name="context">{"search_default_my_tasks": 1}</field>
+        <field name="context">{"search_default_my_open_tasks": 1}</field>
     </record>
     
 
