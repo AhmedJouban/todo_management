@@ -13,3 +13,13 @@ class Todo_Task(models.Model):
     phone= fields.Char(string='Phone', default= 'Phone Number', required= True, tracking=1)
     priority = fields.Selection([('0', 'Very Low'), ('1', 'Low'), ('2', 'Normal'), ('3', 'High')], string='Priority', tracking=1)
     des= fields.Char(string="Description", required=True, tracking=1)
+    note_ids=fields.One2many('todo.lines', 'todo_id')
+
+
+
+
+class Todo_Lines(models.Model):
+    _name= "todo.lines"
+
+    todo_id=fields.Many2one('todo.management')
+    note=fields.Char()
