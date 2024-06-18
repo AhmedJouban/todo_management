@@ -15,6 +15,18 @@ class Todo_Task(models.Model):
     des= fields.Char(string="Description", required=True, tracking=1)
     note_ids=fields.One2many('todo.lines', 'todo_id')
 
+    def in_progress(self):
+        for rec in self:
+            rec.status="in-progress"
+
+    def complete(self):
+        for rec in self:
+            rec.status="complete"
+
+    def new(self):
+        for rec in self:
+            rec.status="new"
+
 
 
 

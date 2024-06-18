@@ -24,7 +24,10 @@
             <form>
                 <sheet>
                     <header>
-                        <field name="status" widget="statusbar" options="{'clickable':'1'}"/>
+                        <button name="in_progress" type= "object" string="In Progress" class="btn-primary" invisible="status=='in-progress'"/>
+                        <button name="complete" type= "object" string="Complete" class="btn-primary" invisible="status!='in-progress'"/>
+                        <button name="new" type= "object" string="Return To New" class="btn-primary" invisible="status=='new'"/>
+                        <field name="status" widget="statusbar"/>
                     </header>
                     <div>
                         <label for='name'></label>
