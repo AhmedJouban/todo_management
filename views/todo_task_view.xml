@@ -26,7 +26,7 @@
                     <header>
                         <button name="in_progress" type= "object" string="In Progress" class="btn-primary" invisible="status=='in-progress'"/>
                         <button name="complete" type= "object" string="Complete" class="btn-primary" invisible="status!='in-progress'"/>
-                        <button name="new" type= "object" string="Return To New" class="btn-primary" invisible="status=='new'"/>
+                        <button name="state_new" type= "object" string="Return To New" class="btn-primary" invisible="status=='new'"/>
                         <field name="status" widget="statusbar"/>
                     </header>
                     <div>

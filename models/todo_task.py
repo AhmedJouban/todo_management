@@ -23,7 +23,7 @@ class Todo_Task(models.Model):
         for rec in self:
             rec.status="complete"
 
-    def new(self):
+    def state_new(self):
         for rec in self:
             rec.status="new"
 
