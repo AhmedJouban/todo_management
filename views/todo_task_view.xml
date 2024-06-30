@@ -5,14 +5,16 @@
         <field name="name">todo task view tree</field>
         <field name="model">todo.management</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree multi_edit='1' decoration-danger='(is_late)'>
                 <field name="name" />
+                <field name="creation_date"/>
                 <field name="due_date"/>
                 <field name="assign_to"/>
                 <field name="phone" />
                 <field name="priority" widget="priority"/>
                 <field name="des" />
                 <field name="status" />
+                <field name="is_late" column_invisible= '1'/>
             </tree>
         </field>
     </record>
@@ -36,12 +38,16 @@
                         </h1>
                     </div>
                     <group>
-                        <field name="due_date"/>
+                        <field name="creation_date"/>
                         <field name="assign_to"/>
                         <field name="phone" />
                         <field name="priority" widget="priority"/>
                         <field name="des" />
                         <field name="active" invisible="1"/>
+                        <field name="days_to_complete"/>
+                        <field name="due_date"/>
+                        <field name="is_late"/>
+
                     </group>
                     <notebook>
                         <page string="Notes">
@@ -103,6 +109,17 @@
         <field name='code'>
             action= records.closed_state()
         </field>
+    </record>
+
+    <record id= 'check_due_date_cron' model='ir.cron'>
+        <field name='name'>Todo.Management: Check Due Date</field>
+        <field name='model_id' ref= 'model_todo_management'/>
+        <field name='state'>code</field>
+        <field name='code'>model.check_due_date()</field>
+        <field name='interval_number'>1</field>
+        <field name='interval_type'>days</field>
+        <field name='numbercall'>-1</field>
+        <field name='active'>True</field>
     </record>
     
 
