@@ -7,9 +7,10 @@
         'base', 'mail'
     ],
     'data' : [
+        'security/ir.model.access.csv',
         'views/base_menu.xml',
         'views/todo_task_view.xml',
-        'security/ir.model.access.csv',
+        'report/todo_report.xml'
         ],
     'application' : True
 }
